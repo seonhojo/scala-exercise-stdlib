@@ -82,6 +82,17 @@ class ListSpec extends FunSuite with Matchers{
 
     println(list2)
     list shouldBe (List(1,2,3,4,5,6,7,8,9,10))
+
+
+
+    val d = Nil
+    val c = 3 :: d
+    val b = 2 :: c
+    val a = 1 :: b
+    println(a)
+    println(c.tail)
+    println(b.tail)
+    println(a.tail)
   }
 }
 
