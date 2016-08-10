@@ -51,16 +51,37 @@ class ListSpec extends FunSuite with Matchers{
       case a :: Nil => println(s"하나 있나? $a")
       case Nil => println("Empty!!")
     }
+  }
 
+  test("map"){
+    val a = List(1, 3, 5, 7)
+    //println(a.map(x => x * 2))
+    //println(a.map(_ * 2))
 
+    a.map(_ * 2) shouldBe(List(2, 6, 10, 14))
+  }
 
+  test("filter"){
+    val a = List(1, 3, 5, 7)
+    //println(a.filter(x => x % 3 == 0))
+    a.filter(x => x % 3 == 0) shouldBe(List(3))
+  }
 
+  test("fold"){
+    val a = List(1, 3, 5, 7)
+    //println(a.foldLeft(0)(_ + _))
+    //println(a.foldLeft(10)(_ + _))
 
+    a.foldLeft(1)(_ * _) shouldBe 105
+    a.foldLeft(0)(_ * _) shouldBe 0
+  }
 
+  test("toList"){
+    val list = (1 to 10).toList
+    val list2 = "abc".toList
 
-
-
-
+    println(list2)
+    list shouldBe (List(1,2,3,4,5,6,7,8,9,10))
   }
 }
 
