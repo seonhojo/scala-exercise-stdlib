@@ -1,18 +1,18 @@
-import org.scalatest.{Matchers, FunSuite}
+import org.scalatest.{FunSuite, Matchers}
 
 import scala.concurrent.Future
 
 /**
  * Created by glenn on 2016. 9. 28..
  */
-class ImplicitSpec extends FunSuite with Matchers{
+class ImplicitSpec extends FunSuite with Matchers {
   //implicit 뜻 '은연중' <-> '명시적' explicit
+  //기존의 스칼라 라이브러리들이 많이 사용하고 있으며
+  //라이브러리를 사용할때 잘이용할수 있다.
+
 
 
   test("explicit") {
-    import ImplicitTest.bar2
-
-
     def foo(bar: String): String = bar + "" + bar
     val str = "hello"
     implicit val str2 = "world"
@@ -63,7 +63,7 @@ class ImplicitSpec extends FunSuite with Matchers{
 
 
     //문법요소
-    implicit class Foo(b: String){
+    implicit class Foo(b: String) {
       def barbarbar: String = b + b + b
     }
 
@@ -90,7 +90,7 @@ class ImplicitSpec extends FunSuite with Matchers{
 
 
 
-    test("실전"){
+    test("실전") {
       //1.암묵적인 type casting
 
       //Edina(sul: String) ==> Suldina(edina: String)
@@ -107,7 +107,7 @@ class ImplicitSpec extends FunSuite with Matchers{
       //implicit class TypeCasting(sul: String): Suldina = Suldina(sul)
       //implicit class TypeCasting(sul: String)
       implicit def casting(edina: Edina): Suldina = Suldina(edina.sul)
-      val suldina : Suldina = Edina("isool")
+      val suldina: Suldina = Edina("isool")
       println(suldina)
 
       //2.기존에 있는 class 에 문법 추가하기
@@ -118,7 +118,7 @@ class ImplicitSpec extends FunSuite with Matchers{
 
       //클래스의 생성자가 중요
       //정답
-      implicit class EdinaName(e: Edina){
+      implicit class EdinaName(e: Edina) {
         def name = "에디나"
       }
 
@@ -142,28 +142,6 @@ class ImplicitSpec extends FunSuite with Matchers{
 
 
     }
-
-
-
-
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
