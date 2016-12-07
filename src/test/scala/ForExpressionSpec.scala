@@ -6,11 +6,8 @@ import org.scalatest.{Matchers, FunSuite}
 case class MyList[A](list: List[A]){
 
   //f: A => List[B]
-  def flatMap[B](f: A => MyList[B]) : MyList[B] =
-    for{
-      list <- f
-      num <- list
-    } println(num)
+  def flatMap[B](f: A => MyList[B]) : MyList[B] = {
+    MyList(list.flatMap(i => f(i).list))
 
   //flatMap을 이용해서
 
